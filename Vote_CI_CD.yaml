@@ -47,7 +47,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: '$(dockerRegistryServiceConnection)'
-        repository: '$(imageRepository)'
+        repository: '$(Dockerimges)'
         command: 'push'
         tags: '$(tag)'
 - stage: Update
@@ -59,4 +59,4 @@ stages:
     - task: ShellScript@2
       inputs:
         scriptPath: 'path/scripts/updateK8sfiles.sh'
-        args: 'vote $(imageRepository) $(tag)'
+        args: 'vote $(Dockerimges) $(tag)'
